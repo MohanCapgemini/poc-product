@@ -12,6 +12,7 @@ import org.springframework.boot.orm.jpa.EntityScan;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -22,7 +23,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 @EnableAutoConfiguration
 @EnableDiscoveryClient
 @SpringBootApplication
-@PropertySource("classpath:db-config.properties")
+@PropertySources({@PropertySource("classpath:db-config.properties"),@PropertySource("file:${config.home}/poc-product-environment.properties")})
 @EntityScan("com.disney.poc.microservices.products")
 @EnableJpaRepositories("com.disney.poc.microservices.products")
 public class ProductsServer {

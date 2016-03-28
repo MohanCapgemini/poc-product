@@ -1,4 +1,5 @@
 FROM java:8
-COPY target/microservice-demo-products-0.0.1-SNAPSHOT.jar /usr/src/microservice-demo-products-0.0.1-SNAPSHOT.jar
+COPY poc-product-environment.properties /usr/src/poc-product-environment.properties
+COPY microservice-demo-products-0.0.1-SNAPSHOT.jar /usr/src/microservice-demo-products-0.0.1-SNAPSHOT.jar
 WORKDIR /usr/src
-CMD java -jar microservice-demo-products-0.0.1-SNAPSHOT.jar
+CMD java -jar -Dconfig.home="/usr/src" microservice-demo-products-0.0.1-SNAPSHOT.jar
